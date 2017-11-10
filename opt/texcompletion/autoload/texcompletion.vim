@@ -1,8 +1,8 @@
 " texcompletion.vim	vim: ts=8 sw=4 ff=unix
 " Language:	TeX / LaTeX
 " Maintainer:	Joe Ding
-" Version:	0.5
-" Last Change:	2017-11-06 10:03:03
+" Version:	0.8
+" Last Change:	2017-11-10 22:48:57
 
 let s:keepcpo = &cpo
 set cpo&vim
@@ -15,11 +15,22 @@ function s:load_file(file)
 
     let file = fnamemodify(a:file, ":t:r")
     let menu = substitute(file, '^[^_]*_', '', '')
-
     let dict = map(line,'{"word": v:val, "menu":"'.menu.'", "file":"'.file.'"}')
-    call extend(s:ctrl_seq, dict)
+    call extend(s:ctrl_seq, s:fill_menu(dict))
 
     bwipeout
+endfunction
+
+function s:fill_menu(dict)
+    for d in a:dict
+	let sp = split(d.word, "\t")
+	let d.word = sp[0]
+	if len(sp) > 1
+	    let d.menu .= "-".sp[1]
+	endif
+    endfor
+
+    return a:dict
 endfunction
 
 if empty(s:ctrl_seq)	" load completion now
