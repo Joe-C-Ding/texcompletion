@@ -2,15 +2,14 @@
 " Language:	TeX / LaTeX
 " Maintainer:	Joe Ding
 " Version:	0.8
-" Last Change:	2017-11-10 22:48:57
+" Last Change:	2017-11-13 10:11:17
 
 let s:keepcpo = &cpo
 set cpo&vim
 
 let s:ctrl_seq = []
 function s:load_file(file)
-    noautocmd exec 'vs '.fnameescape(a:file)
-    " noautocmd exec 'vs +set\ noswf\ buftype=nowrite '.escape(a:file, ' \')
+    noautocmd exec 'vs +set\ noswf\ buftype=nowrite '.fnameescape(a:file)
     let line = getline(1, "$")
 
     let file = fnamemodify(a:file, ":t:r")
@@ -24,8 +23,8 @@ endfunction
 function s:fill_menu(dict)
     for d in a:dict
 	let sp = split(d.word, "\t")
-	let d.word = sp[0]
 	if len(sp) > 1
+	    let d.word = sp[0]
 	    let d.menu .= "-".sp[1]
 	endif
     endfor
