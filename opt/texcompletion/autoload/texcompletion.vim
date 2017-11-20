@@ -2,7 +2,7 @@
 " Language:	TeX / LaTeX
 " Maintainer:	Joe Ding
 " Version:	0.8
-" Last Change:	2017-11-13 10:11:17
+" Last Change:	2017-11-15 21:53:57
 
 let s:keepcpo = &cpo
 set cpo&vim
@@ -48,9 +48,9 @@ function! texcompletion#Cmp_command(findstart, base)
     if a:findstart
 	" locate the start of the \commands (control sequences)
 	let line = getline('.')
-	let curr = col('.') - 1
-	let start = match(line, '^.*\zs\\')
-	if start < 0 || start >= curr
+	let curr = col('.') - 2
+	let start = match(line[0:curr], '^.*\zs\\')
+	if start < 0
 	    " -2 To cancel silently and stay in completion mode.
 	    let start = -2
 	endif
