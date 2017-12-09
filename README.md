@@ -33,8 +33,7 @@ into your vimrc file to enable this plugin. You should know how to disable it no
 
 ## dependency
 *required* vim version is >= 8.0.
-
-Packages is introduced into vim from 8.0.
-Lambda expresses are used in some functions, and this featrue is introduced from 8.0 too.
+- Packages is introduced into vim from 8.0.
+- Lambda expresses are used in some functions, and this featrue is introduced from 8.0 too.
 
 More about using vim packages see vim's document `:h packages`.
