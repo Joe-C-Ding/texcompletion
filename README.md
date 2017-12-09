@@ -1,5 +1,5 @@
 # texcompletion
-Vim filetype plugin to complete TeX / LaTeX control sequences
+A Vim filetype plugin to complete TeX / LaTeX control sequences
 
 ## featrue
 There are several plugins that help `Vimmer` to write Tex/LaTeX documents, such as
